@@ -232,7 +232,9 @@
             meshes[0].receiveShadows = true;
             body = meshes;
 
-            animationGroups[0].start(true);
+            animationGroups[0].stop();
+
+            animationGroups[0].start(true, 1, 0, 101);
           }
         );
         // setInterval(() => {
@@ -270,7 +272,9 @@
               light1.excludedMeshes.push(meshes[i]);
             }
 
-            animationGroups[0].start(true);
+            animationGroups[0].stop();
+
+            animationGroups[0].start(true, 1, 0, 101);
             console.log(animationGroups);
 
             skelleton = meshes;
@@ -278,6 +282,7 @@
         );
         let trakaL = null;
         let trakaR = null;
+        let traka = null;
         BABYLON.SceneLoader.ImportMesh(
           "",
           "",
@@ -291,6 +296,7 @@
             meshes[0].receiveShadows = true;
             meshes[0].position.y = 30;
             console.log(meshes);
+            traka = meshes;
             trakaL = [meshes[6], meshes[7], meshes[8], meshes[9], meshes[10]];
             trakaR = [
               meshes[11],
@@ -328,6 +334,8 @@
             trakaL != null &&
             trakaR != null
           ) {
+            traka[4].material.albedoTexture.vOffset += 0.01;
+
             if (
               orbitCamera.position.x < 476 &&
               orbitCamera.position.x > -480 &&
